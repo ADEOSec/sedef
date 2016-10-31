@@ -2,14 +2,27 @@ module SubdomainFinder
   module WebServices
     class Wolframalfa
       def initialize(target)
+        @paint = SubdomainFinder::Helper::Paint.new
         @target_host = target
+        @subdomains = []
+
+        unless File.exist?(File.join(MAIN_PATH, 'config.yml'))
+          @paint.danger "[-] Config.yml file is not exist."
+          return 0
+        end
+
         @thing = YAML.load_file(File.join(MAIN_PATH, 'config.yml'))
+
+        if @thing["wolfram"].empty?
+          @paint.danger "[-] WolframAlfa haven't API Key. Please check #{MAIN_PATH}/config.yml file"
+          return 0
+        end
+
         @api_key = @thing["wolfram"]
 
         @api_host = "http://api.wolframalpha.com/v2/query"
         @query = self.set_query
-        @subdomains = []
-        @paint = SubdomainFinder::Helper::Paint.new
+
         if self.up_down == 200
           @paint.success "[+] WolframAlfa is UP!"
           self.send_request
