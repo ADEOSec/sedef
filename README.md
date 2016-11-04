@@ -1,6 +1,8 @@
 # SeDeF #
 
-SeDeF is a tool I have made to learn Ruby language. Subdomain Finder Application has 2 tools and 4 web services. With these we are finding the subdomains of the domain. Firstly, app is looking to the status codes of these subdomains.
+SeDeF is a tool that I have made to learn Ruby language. The Subdomain Finder Application has 2 tools and 4 web services. We get the subdomains of a domain through those things.
+
+First of all, the app checks of the status codes of the subdomains.
 
 | Tools | Web Services |
 | ----- | ------------ |
@@ -9,14 +11,13 @@ SeDeF is a tool I have made to learn Ruby language. Subdomain Finder Application
 | | Pkey |
 | | WolframAlpha |
 
-Subdomain Finder looking the **robots.txt**, **readme.html**, **components** and **wp-content**’s for detect that the site using wordpress or using joomla.
+The Subdomain Finder looks for **robots.txt**, **readme.html**, **components** and **wp-content** to detect that the site uses WordPress or uses Joomla.
 
-If subdomain uses the wordpress my app executing the wpcan tool and creating a report. The report saving into the **/reports/domain/wpscan/subdomain.txt**
+If the subdomain uses the WordPress then my app executes the wpcan tool and it creates a report. The report can be saved in **/reports/domain/wpscan/subdomain.txt**
 
-If subdomain uses the joomla my app executing the joomlavs tool and creating a report. The report saving into the **/reports/domain/joomlavs/subdomain.txt**  
+If the subdomain uses the Joomla my app executes the joomlavs tool and it creates a report. The report can be saved in **/reports/domain/joomlavs/subdomain.txt**  
 
-We’re hiding these in  the hash structure.
-
+The app keep these keywords on the hash structure.
 
 ```
 #!ruby
@@ -36,7 +37,9 @@ Subdomain: {
 ```
 
 ## The Scanners requirements
-SubdomainFinder has a lot of requirements so I don’t want to exhause the last user. Because of that I have used the Docker feature. With these writed a code to create Docker file. We are assuming the docker has already installed on  the user’s system. With these command, we are creating the docker image:
+SubdomainFinder has a lot of requirements. So, I don’t want to occupy the end user. So, that's why I used Docker. We assume that Docker installed on the user’s system. 
+
+We can create a Docker image through those commands;
 
 ```
 #!bash
@@ -44,10 +47,10 @@ docker build -t [tagname] [path]
 docker build -t sedef .
 ```
 
-Then, if we executed the “**docker images**” command, we can see the all other images. Our docker image name is sedef, so now we can see the “sedef”
+If we execute the “**docker images**” command then we can see all images. Our docker image's name is sedef. So, we can see the “sedef”
 
-We are running the docker image and popping a shell.
-We are executing our tools with “**sedef -d [domain_name]**” command.
+The Docker image runs and poke up it through the shell.
+We execute our tools with “**sedef -d [domain_name]**” command.
 
 ```
 #!bash
@@ -56,4 +59,4 @@ docker run -v $PWD/reports:/opt/subdomainfinder/reports -it sedef
 sedef -d [domain_name]
 ```
 
-*I have named as a “Sedef”, because it is a Turkish project so it have to demonstrate Turkish architecture ;)*
+*I have entitled as “Sedef”. Because it is a Turkish project. So it proves the Turkish architecture ;)*
