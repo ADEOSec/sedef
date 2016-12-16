@@ -107,7 +107,7 @@ module SubdomainFinder
                 @paint.boolean_message( subdomain.last['joomla'][:components] )
             ]
           end
-        table = Terminal::Table.new :headings => [{:value => " ", :colspan => 2 },{:value => 'HTTP/S STATUS',:colspan => 2 }, {:value => '<WORDPRESS>', :colspan => 3},{:value => '<JOOMLA>', :colspan => 2}], :rows => rows, :style => {:alignment => :center}
+        table = Terminal::Table.new :headings => [{:value => " ", :colspan => 2 },{:value => 'HTTP/S STATUS',:colspan => 2 }, {:value => '<WORDPRESS>', :colspan => 3},{:value => '<JOOMLA>', :colspan => 2}], :rows => rows
         puts table
       end
 
