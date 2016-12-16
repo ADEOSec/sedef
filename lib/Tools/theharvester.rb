@@ -3,7 +3,7 @@ module SubdomainFinder
     class TheHarvester
       def initialize target
         @target = target
-        @main_command = "theHarvester"
+        @main_command = "theharvester"
         @param = " -d #{@target} -l 500 -b bing"
         @tools_public = SubdomainFinder::Tools::ToolsPublic.new @main_command,@param
 
