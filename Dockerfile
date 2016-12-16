@@ -36,12 +36,12 @@ RUN chmod +x /usr/local/bin/joomlavs
 WORKDIR /opt
 
 # Install theHarvester
-RUN git clone https://github.com/laramies/theHarvester.git /opt/theHarvester
-WORKDIR /opt/theHarvester
+RUN git clone https://github.com/laramies/theHarvester.git /opt/theharvester
+WORKDIR /opt/theharvester
 RUN pip install requests
-RUN rm -rf /usr/local/bin/theHarvester
-RUN ln -s /opt/theHarvester/theHarvester.py /usr/local/bin/theHarvester
-RUN chmod +x /usr/local/bin/theHarvester
+RUN rm -rf /usr/local/bin/theharvester
+RUN ln -s /opt/theharvester/theHarvester.py /usr/local/bin/theharvester
+RUN chmod +x /usr/local/bin/theharvester
 
 WORKDIR /opt
 
